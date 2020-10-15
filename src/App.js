@@ -1,21 +1,12 @@
 import React from "react";
-import "./App.css";
+import { ThemeProvider } from "theme-ui";
+import NavBar from "./components/NavBar";
+import theme from "./theme";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <NavBar />
+  </ThemeProvider>
+);
 
 export default App;
