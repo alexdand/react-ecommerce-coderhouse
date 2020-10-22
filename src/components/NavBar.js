@@ -8,7 +8,7 @@ const NavBar = () => {
   const menuItems = ["HOME", "SHOP", "CONTACT"];
 
   const handleMenuItemClick = (item) => {
-    console.log("You've just clicked me:", item);
+    console.log("You've just clicked a menu item:", item);
   };
 
   return (
@@ -23,7 +23,11 @@ const NavBar = () => {
         <h1>Jack Food Service</h1>
         <ul sx={{ display: "flex" }}>
           {menuItems.map((item) => (
-            <MenuItem item={item} onItemClick={handleMenuItemClick} />
+            <MenuItem
+              key={item}
+              item={item}
+              onItemClick={handleMenuItemClick}
+            />
           ))}
         </ul>
       </div>
