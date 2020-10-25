@@ -25,7 +25,10 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <NavBar />
       <ItemListContainer title="Some title" products={products} />
-      <ItemCount stock={5} onAdd={() => console.log("Product added to cart")} />
+      <ItemCount
+        stock={5}
+        onAdd={(quantity) => alert(`Added ${quantity} products to cart`)}
+      />
     </ThemeProvider>
   );
 };
