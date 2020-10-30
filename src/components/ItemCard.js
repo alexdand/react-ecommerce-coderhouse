@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import ItemCount from "./ItemCount";
 
 const ItemCard = ({ id, name, price, stock, img }) => {
   return (
@@ -12,16 +11,6 @@ const ItemCard = ({ id, name, price, stock, img }) => {
       <img src={img} alt={name} sx={{ width: "200px", height: "250px" }} />
       <span>{price}</span>
       {stock === 0 ? <p>Out of stock</p> : null}
-      <ItemCount
-        // I'm not planning on leaving this component here necessarily, just wondering how it would look like for now
-        stock={stock}
-        onAdd={(quantity) =>
-          quantity > 0 &&
-          alert(
-            `Added ${quantity} products of id ${id} and price ${price} to the cart`
-          )
-        }
-      />
     </div>
   );
 };
