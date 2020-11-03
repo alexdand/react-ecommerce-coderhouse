@@ -9,7 +9,8 @@ const ItemDetail = ({ item }) => {
     }
   };
 
-  const { name, price, stock, img } = item;
+  const { name, price, stock, img, description } = item;
+  console.log(description);
 
   return (
     <div sx={{}}>
@@ -25,6 +26,9 @@ const ItemDetail = ({ item }) => {
       <img sx={{ width: "300px", height: "400px" }} src={img} alt={name} />
       <div>
         <span>${price}</span>
+      </div>
+      <div>
+        <p>{description}</p>
       </div>
       <ItemCount stock={stock} onAdd={addItemToCart} />
     </div>

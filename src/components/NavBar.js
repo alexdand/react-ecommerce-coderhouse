@@ -1,15 +1,12 @@
 /** @jsx jsx */
+import { Link } from "react-router-dom";
 import { jsx } from "theme-ui";
 import CartWidget from "./CartWidget";
 import MenuItem from "./MenuItem";
 import ToggleMode from "./ToggleMode";
 
 const NavBar = () => {
-  const menuItems = ["HOME", "SHOP", "CONTACT"];
-
-  const handleMenuItemClick = (item) => {
-    console.log("You've just clicked a menu item:", item);
-  };
+  const menuItems = ["home", "contact"];
 
   return (
     <div sx={{ display: "flex", justifyContent: "space-around" }}>
@@ -20,14 +17,12 @@ const NavBar = () => {
           width: "100%",
         }}
       >
-        <h1>Jack Food Service</h1>
+        <Link sx={{ variant: "styles.a" }} to="/">
+          <h1>Jack Food Service</h1>
+        </Link>
         <ul sx={{ display: "flex" }}>
           {menuItems.map((item) => (
-            <MenuItem
-              key={item}
-              item={item}
-              onItemClick={handleMenuItemClick}
-            />
+            <MenuItem key={item} item={item} />
           ))}
         </ul>
       </div>

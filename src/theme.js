@@ -81,6 +81,7 @@ const theme = {
     },
     a: {
       color: "primary",
+      textDecoration: "none",
       "&:hover": {
         color: "secondary",
       },

@@ -1,7 +1,8 @@
 /** @jsx jsx */
+import { Link } from "react-router-dom";
 import { jsx } from "theme-ui";
 
-const MenuItem = ({ item, onItemClick }) => {
+const MenuItem = ({ item }) => {
   return (
     <li
       key={item}
@@ -10,15 +11,11 @@ const MenuItem = ({ item, onItemClick }) => {
         p: "10px",
         mx: "10px",
         fontWeight: "bold",
-        cursor: "pointer",
-        ":hover": {
-          backgroundColor: "text",
-          color: "background",
-        },
       }}
-      onClick={() => onItemClick(item)}
     >
-      {item}
+      <Link sx={{ variant: "styles.a" }} to={`/${item}`}>
+        {item.toUpperCase()}
+      </Link>
     </li>
   );
 };
