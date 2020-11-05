@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { jsx } from "theme-ui";
 import ItemCard from "./ItemCard";
 
-const mockProducts = [
+export const mockProducts = [
   {
     id: 1,
     name: "Xbox 360",

@@ -10,7 +10,6 @@ const ItemDetail = ({ item }) => {
   };
 
   const { name, price, stock, img, description } = item;
-  console.log(description);
 
   return (
     <div sx={{}}>
