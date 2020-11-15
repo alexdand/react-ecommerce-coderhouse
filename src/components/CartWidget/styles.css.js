@@ -8,17 +8,17 @@ export const StyledLink = styled(Link)`
   font-size: 30px;
   position: relative;
   > span {
-    font-size: 16px;
-    width: 20px;
-    height: 20px;
+    font-size: 10px;
+    width: 10px;
+    height: 10px;
     text-align: center;
     position: absolute;
     background-color: ${Colors.Green};
     color: ${Colors.White};
     border-radius: 50%;
     padding: 5px;
-    top: -10px;
-    right: -10px;
+    top: 0px;
+    right: 0px;
     display: block;
   }
 `;
