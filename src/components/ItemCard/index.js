@@ -1,17 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { StyledImage, StyledLink, StyledTitle } from "./styles.css";
+import {
+  StyledItemCard,
+  StyledImage,
+  StyledLink,
+  StyledTitle,
+  StyledPrice,
+  StyledButton,
+} from "./styles.css";
+import { useCart } from "../../context/CartProvider";
 
-const ItemCard = ({ id, name, price, stock, img }) => {
+const ItemCard = (item) => {
+  const { addProductToCart } = useCart();
+
+  const addToCart = (evt, item) => {
+    addProductToCart(item, 1);
+    evt.stopPropagation();
+  };
+
+  const { id, name, price, stock, img } = item;
+
   return (
-    <StyledLink>
-      <Link to={`/products/${id}`}>
-        <StyledTitle>{name}</StyledTitle>
+    <StyledItemCard>
+      <StyledLink to={`/products/${id}`}>
         <StyledImage src={img} alt={name} />
-        <span>{price}</span>
-        {stock === 0 ? <p>Out of stock</p> : null}
-      </Link>
-    </StyledLink>
+        <StyledTitle>{name}</StyledTitle>
+      </StyledLink>
+      <StyledPrice>${price}</StyledPrice>
+      {stock === 0 ? <p>Out of stock</p> : null}
+      <StyledButton onClick={(evt) => addToCart(evt, item)}>
+        Add To Cart
+      </StyledButton>
+    </StyledItemCard>
   );
 };
 

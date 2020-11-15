@@ -1,20 +1,43 @@
 import React from "react";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartProvider";
-
-export const StyledCart = styled.div`
-  display: grid;
-`;
+import { StyledCart, StyledList, StyledRow, StyledImage } from "./styles.css";
 
 const Cart = () => {
-  const { productsInCart } = useCart();
-  console.log(productsInCart);
+  const { productsInCart, removeProductFromCart } = useCart();
+
+  const calculateTotal = () =>
+    productsInCart.reduce((sum, { item, count }) => {
+      const subtotal = item.price * count;
+      return sum + subtotal;
+    }, 0);
+
+  const removeFromCart = (product) => removeProductFromCart(product);
 
   return (
     <StyledCart>
-      {productsInCart.map((product) => (
-        <div key={product.id}>{JSON.stringify(product)}</div>
-      ))}
+      <StyledList>
+        {productsInCart.length === 0 ? (
+          <>
+            <span>No products in cart</span>
+            <Link to="/">Go back</Link>
+          </>
+        ) : (
+          productsInCart.map((product) => {
+            const { item, count } = product;
+            return (
+              <StyledRow key={item.id}>
+                <StyledImage src={item.img} alt={item.name} />
+                <span>{item.name}</span>
+                <span>{item.price}</span>
+                <span>{count}</span>
+                <button onClick={() => removeFromCart(item)}>Remove</button>
+              </StyledRow>
+            );
+          })
+        )}
+      </StyledList>
+      {productsInCart.length > 0 && <span>Total: {calculateTotal()}</span>}
     </StyledCart>
   );
 };

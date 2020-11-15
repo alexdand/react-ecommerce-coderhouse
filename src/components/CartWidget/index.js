@@ -1,17 +1,22 @@
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartProvider";
+import { StyledLink } from "./styles.css";
 
 const CartWidget = () => {
   const { productsInCart } = useCart();
 
+  const countItems = productsInCart.reduce(
+    (total, { count }) => total + count,
+    0
+  );
+
   return (
     <div>
-      <Link to="/cart">
+      <StyledLink to="/cart">
         <FiShoppingCart />
-        <span>{productsInCart.length}</span>
-      </Link>
+        <span>{countItems}</span>
+      </StyledLink>
     </div>
   );
 };

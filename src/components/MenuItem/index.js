@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-const StyledItem = styled.li`
-  list-sttyle-type: none;
-  padding: 10px;
-  margin: 0 10px;
-  font-weight: bold;
-`;
+import { StyledItem } from "./styles.css";
 
 const MenuItem = ({ item }) => {
   return (

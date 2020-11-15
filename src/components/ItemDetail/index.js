@@ -18,7 +18,6 @@ const ItemDetail = ({ item }) => {
   const finishOrder = () => {
     history.push({
       pathname: "/cart",
-      search: "?cartId=123", // TODO: una idea para mas adelante todavia no se como voy a hacer el Cart component
       state: { quantity: quantity },
     });
   };

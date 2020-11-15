@@ -5,19 +5,17 @@ import MenuItem from "../MenuItem";
 import { StyledContainer, StyledMenu, StyledWidgets } from "./styles.css";
 
 const NavBar = () => {
-  const menuItems = ["home", "contact"];
+  const menuItems = ["home", "shop"];
 
   return (
     <StyledContainer>
+      <Link to="/">
+        <h1>Jack Food Service</h1>
+      </Link>
       <StyledMenu>
-        <Link to="/">
-          <h1>Jack Food Service</h1>
-        </Link>
-        <ul sx={{ display: "flex" }}>
-          {menuItems.map((item) => (
-            <MenuItem key={item} item={item} />
-          ))}
-        </ul>
+        {menuItems.map((item) => (
+          <MenuItem key={item} item={item} />
+        ))}
       </StyledMenu>
       <StyledWidgets>
         <CartWidget />

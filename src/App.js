@@ -8,12 +8,12 @@ import Cart from "./components/Cart";
 
 const App = () => {
   return (
-    <CartProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <CartProvider>
         <NavBar />
         <Switch>
           <Route exact path={["/", "/home"]}>
-            <ItemListContainer title="Some title" />
+            <ItemListContainer />
           </Route>
           <Route exact path="/products/:productId">
             <ItemDetailContainer />
@@ -22,8 +22,8 @@ const App = () => {
             <Cart />
           </Route>
         </Switch>
-      </BrowserRouter>
-    </CartProvider>
+      </CartProvider>
+    </BrowserRouter>
   );
 };
 

@@ -25,7 +25,7 @@ const itemTask = new Promise((res) => {
   }, 2000);
 });
 
-const ItemListContainer = ({ title }) => {
+const ItemListContainer = (props) => {
   const [products, setProducts] = React.useState([]);
 
   React.useEffect(() => {
@@ -37,7 +37,6 @@ const ItemListContainer = ({ title }) => {
 
   return (
     <div>
-      <h2>{title}</h2>
       <StyledProducts>
         {products.map((prod) => (
           <ItemCard key={prod.id} {...prod} />

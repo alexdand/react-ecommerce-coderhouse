@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
 export const StyledProducts = styled.div`
-  display: flex;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 `;
