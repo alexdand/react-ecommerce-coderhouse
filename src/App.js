@@ -4,6 +4,7 @@ import ItemListContainer from "./components/ItemList";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import CartProvider from "./context/CartProvider";
+import Cart from "./components/Cart";
 
 const App = () => {
   return (
@@ -18,10 +19,7 @@ const App = () => {
             <ItemDetailContainer />
           </Route>
           <Route exact path="/cart">
-            <p>Proximamente Cart Component</p>
-          </Route>
-          <Route exact path="/contact">
-            <p>Proximamente Contact Component</p>
+            <Cart />
           </Route>
         </Switch>
       </BrowserRouter>
