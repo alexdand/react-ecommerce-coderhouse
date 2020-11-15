@@ -2,13 +2,11 @@
 import { useState } from "react";
 import { jsx } from "theme-ui";
 
-// Will be used in ProductDetail component..
-
-const ItemCount = ({ stock, initial = 0, onAdd }) => {
-  const [quantity, setQuantity] = useState(initial);
+const ItemCount = ({ stock, onAddToCart }) => {
+  const [quantity, setQuantity] = useState(1);
 
   const decrease = () =>
-    quantity > 0 ? setQuantity(quantity - 1) : setQuantity(0);
+    quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1);
 
   const increase = () =>
     quantity < stock ? setQuantity(quantity + 1) : setQuantity(stock);
@@ -24,7 +22,7 @@ const ItemCount = ({ stock, initial = 0, onAdd }) => {
             <span>{quantity}</span>
             <button onClick={increase}>+</button>
           </div>
-          <button disabled={quantity < 1} onClick={() => onAdd(quantity)}>
+          <button disabled={quantity < 1} onClick={() => onAddToCart(quantity)}>
             Add to Cart
           </button>
         </div>
