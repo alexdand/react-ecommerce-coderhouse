@@ -1,7 +1,6 @@
-/** @jsx jsx */
-import { useEffect, useState } from "react";
-import { jsx } from "theme-ui";
-import ItemCard from "./ItemCard";
+import React from "react";
+import ItemCard from "../ItemCard";
+import { StyledProducts } from "./styles.css";
 
 export const mockProducts = [
   {
@@ -27,9 +26,9 @@ const itemTask = new Promise((res) => {
 });
 
 const ItemListContainer = ({ title }) => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     itemTask.then((prds) => {
       setProducts(prds);
     });
@@ -39,11 +38,11 @@ const ItemListContainer = ({ title }) => {
   return (
     <div>
       <h2>{title}</h2>
-      <div sx={{ display: "flex" }}>
+      <StyledProducts>
         {products.map((prod) => (
           <ItemCard key={prod.id} {...prod} />
         ))}
-      </div>
+      </StyledProducts>
     </div>
   );
 };

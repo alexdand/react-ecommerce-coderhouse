@@ -1,11 +1,8 @@
-/** @jsx jsx */
-import { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { jsx } from "theme-ui";
-
-import ItemDetail from "./ItemDetail";
-import Loading from "./Loading";
-import { mockProducts } from "./ItemListContainer";
+import ItemDetail from "../ItemDetail";
+import Loading from "../Loading";
+import { mockProducts } from "../ItemList";
 import { Fragment } from "react";
 
 const itemDetailTask = (productId) =>
@@ -17,11 +14,11 @@ const itemDetailTask = (productId) =>
   });
 
 const ItemDetailContainer = () => {
-  const [item, setItem] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [item, setItem] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
   const { productId } = useParams();
 
-  useEffect(() => {
+  React.useEffect(() => {
     itemDetailTask(productId).then((item) => {
       // NOTE: Previously, this piece was setLoading(false) and then setItem(item)
       // But this caused ItemDetail to get rendered twice, I'm assuming because

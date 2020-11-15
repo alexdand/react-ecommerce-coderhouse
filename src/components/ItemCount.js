@@ -1,6 +1,5 @@
-/** @jsx jsx */
+import React from "react";
 import { useState } from "react";
-import { jsx } from "theme-ui";
 
 const ItemCount = ({ stock, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
@@ -12,7 +11,7 @@ const ItemCount = ({ stock, onAddToCart }) => {
     quantity < stock ? setQuantity(quantity + 1) : setQuantity(stock);
 
   return (
-    <div sx={{}}>
+    <div>
       {stock === 0 ? (
         <p>Stock no disponible</p>
       ) : (

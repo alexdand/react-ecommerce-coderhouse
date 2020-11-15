@@ -1,18 +1,21 @@
-/** @jsx jsx */
-import { useEffect, useState } from "react";
-import { jsx } from "theme-ui";
+import React from "react";
+import styled from "styled-components";
+
+const StyledMessage = styled.div`
+  font-size: 40px;
+`;
 
 const Loading = () => {
-  const [dots, setDots] = useState(".");
+  const [dots, setDots] = React.useState(".");
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDots(dots === "..." ? "." : dots + ".");
     }, 400);
     return () => clearTimeout(timeoutId);
   }, [dots]);
 
-  return <div sx={{ color: "primary", fontSize: "40px" }}>Loading{dots}</div>;
+  return <StyledMessage>Loading{dots}</StyledMessage>;
 };
 
 export default Loading;

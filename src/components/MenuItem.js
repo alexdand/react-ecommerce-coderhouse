@@ -1,22 +1,19 @@
-/** @jsx jsx */
+import React from "react";
 import { Link } from "react-router-dom";
-import { jsx } from "theme-ui";
+import styled from "styled-components";
+
+const StyledItem = styled.li`
+  list-sttyle-type: none;
+  padding: 10px;
+  margin: 0 10px;
+  font-weight: bold;
+`;
 
 const MenuItem = ({ item }) => {
   return (
-    <li
-      key={item}
-      sx={{
-        listStyleType: "none",
-        p: "10px",
-        mx: "10px",
-        fontWeight: "bold",
-      }}
-    >
-      <Link sx={{ variant: "styles.a" }} to={`/${item}`}>
-        {item.toUpperCase()}
-      </Link>
-    </li>
+    <StyledItem key={item}>
+      <Link to={`/${item}`}>{item.toUpperCase()}</Link>
+    </StyledItem>
   );
 };
 

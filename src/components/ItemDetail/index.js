@@ -1,12 +1,11 @@
-/** @jsx jsx */
-import { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { jsx } from "theme-ui";
-import ItemCount from "./ItemCount";
-import { useCart } from "../context/CartProvider";
+import ItemCount from "../ItemCount";
+import { useCart } from "../../context/CartProvider";
+import { StyledHeader, StyledImage } from "./styles.css";
 
 const ItemDetail = ({ item }) => {
-  const [quantity, setQuantityOrder] = useState(0);
+  const [quantity, setQuantityOrder] = React.useState(0);
   const { name, price, stock, img, description } = item;
   const history = useHistory();
   const { addProductToCart } = useCart();
@@ -25,17 +24,9 @@ const ItemDetail = ({ item }) => {
   };
 
   return (
-    <div sx={{}}>
-      <h2
-        sx={{
-          textTransform: "uppercase",
-          fontWeight: "bold",
-          letterSpacing: "2px",
-        }}
-      >
-        {name}
-      </h2>
-      <img sx={{ width: "300px", height: "400px" }} src={img} alt={name} />
+    <div>
+      <StyledHeader>{name}</StyledHeader>
+      <StyledImage src={img} alt={name} />
       <div>
         <span>${price}</span>
       </div>
