@@ -2,16 +2,20 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail";
 import Loading from "../Loading";
-import { mockProducts } from "../ItemList";
 import { Fragment } from "react";
+import { db } from "../../firebase";
 
-const itemDetailTask = (productId) =>
-  new Promise((res) => {
-    setTimeout(() => {
-      const id = Number(productId);
-      res(mockProducts.find((prod) => prod.id === id));
-    }, 2000);
-  });
+const getItem = (productId) =>
+  db
+    .collection("products")
+    .get()
+    .then((querySnapshot) => {
+      const products = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      return products.find((p) => p.id === productId);
+    });
 
 const ItemDetailContainer = () => {
   const [item, setItem] = React.useState({});
@@ -19,12 +23,9 @@ const ItemDetailContainer = () => {
   const { productId } = useParams();
 
   React.useEffect(() => {
-    itemDetailTask(productId).then((item) => {
+    getItem(productId).then((item) => {
       // NOTE: Previously, this piece was setLoading(false) and then setItem(item)
-      // But this caused ItemDetail to get rendered twice, I'm assuming because
-      // setLoading(false) would trigger a re-render with an empty item due to
-      // useState({}) and then setting the item would cause another re-render.
-      // It is annoying to think about these things, need to look into useReducer.
+      // But this caused ItemDetail to get rendered twice. Need to look into useReducer.
       setItem(item);
       setLoading(false);
     });
