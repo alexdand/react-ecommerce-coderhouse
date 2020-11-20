@@ -1,24 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-const StyledCategories = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 40px;
-`;
-
-const StyledCard = styled.div`
-  width: 300px;
-  height: 300px;
-  > a {
-    > img {
-      width: 100%;
-      height: 80%;
-    }
-  }
-`;
+import { StyledCard, StyledCategories } from "./styles.css";
 
 const CategoryCard = ({ name, route, img }) => {
   return (
@@ -31,7 +13,7 @@ const CategoryCard = ({ name, route, img }) => {
   );
 };
 
-const Categories = props => {
+const Categories = () => {
   const categories = [
     { name: "Sandwiches", img: "sandwiches.jpg" },
     { name: "Salads", img: "salads.jpg" },
