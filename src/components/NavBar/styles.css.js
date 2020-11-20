@@ -5,7 +5,8 @@ export const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid ${Colors.LightGray};
-  padding: 20px;
+  padding: 10px;
+  align-items: center;
 `;
 
 export const StyledMenu = styled.ul`

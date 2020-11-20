@@ -5,7 +5,7 @@ import MenuItem from "../MenuItem";
 import { StyledContainer, StyledMenu, StyledWidgets } from "./styles.css";
 
 const NavBar = () => {
-  const menuItems = ["home", "shop"];
+  const menuItems = ["home", "categories"];
 
   return (
     <StyledContainer>
@@ -13,7 +13,7 @@ const NavBar = () => {
         <h1>Jack Food Service</h1>
       </Link>
       <StyledMenu>
-        {menuItems.map((item) => (
+        {menuItems.map(item => (
           <MenuItem key={item} item={item} />
         ))}
       </StyledMenu>

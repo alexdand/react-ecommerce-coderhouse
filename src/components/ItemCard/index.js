@@ -9,7 +9,7 @@ import {
 } from "./styles.css";
 import { useCart } from "../../context/CartProvider";
 
-const ItemCard = (item) => {
+const ItemCard = item => {
   const { addProductToCart } = useCart();
 
   const addToCart = (evt, item) => {
@@ -27,7 +27,7 @@ const ItemCard = (item) => {
       </StyledLink>
       <StyledPrice>${price}</StyledPrice>
       {stock === 0 ? <p>Out of stock</p> : null}
-      <StyledButton onClick={(evt) => addToCart(evt, item)}>
+      <StyledButton onClick={evt => addToCart(evt, item)}>
         Add To Cart
       </StyledButton>
     </StyledItemCard>

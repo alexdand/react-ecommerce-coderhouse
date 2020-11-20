@@ -6,11 +6,10 @@ import { StyledCart, StyledList, StyledRow, StyledImage } from "./styles.css";
 const Cart = () => {
   const { productsInCart, removeProductFromCart } = useCart();
 
-  const calculateTotal = () =>
-    productsInCart.reduce((sum, { item, count }) => {
-      const subtotal = item.price * count;
-      return sum + subtotal;
-    }, 0);
+  const totalSum = productsInCart.reduce((sum, { item, count }) => {
+    const subtotal = item.price * count;
+    return sum + subtotal;
+  }, 0);
 
   const removeFromCart = (product) => removeProductFromCart(product);
 
@@ -37,7 +36,7 @@ const Cart = () => {
           })
         )}
       </StyledList>
-      {productsInCart.length > 0 && <span>Total: {calculateTotal()}</span>}
+      {productsInCart.length > 0 && <span>Total: {totalSum}</span>}
     </StyledCart>
   );
 };
