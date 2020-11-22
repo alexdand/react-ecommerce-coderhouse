@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Colors } from "../../styles/colors";
 
@@ -35,4 +36,28 @@ export const BuyButton = styled.button`
 
 export const Total = styled.div`
   font-size: 18px;
+`;
+
+export const EmptyCart = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  h1 {
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 30px;
+  }
+  h4 {
+    margin-bottom: 20px;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${Colors.White};
+  background-color: ${Colors.Green};
+  text-decoration: none;
+  padding: 5px;
+  font-size: 20px;
 `;

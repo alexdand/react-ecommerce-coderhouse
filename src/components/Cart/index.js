@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartProvider";
 import {
   StyledCart,
@@ -8,9 +7,11 @@ import {
   StyledImage,
   BuyButton,
   Total,
+  EmptyCart,
+  StyledLink,
 } from "./styles.css";
 import { db } from "../../firebase";
-import firebaseApp from "../../firebase";
+import firebase from "firebase";
 
 const Cart = () => {
   const { productsInCart, removeProductFromCart } = useCart();
@@ -23,26 +24,31 @@ const Cart = () => {
   const removeFromCart = product => removeProductFromCart(product);
 
   const createOrder = async () => {
-    console.log(productsInCart);
     const newOrder = {
       items: productsInCart,
       date: Date.now(),
     };
     const orders = db.collection("orders");
     try {
-      // Error creating order TypeError: Cannot read property 'documentId' of undefined
       orders.add(newOrder);
       const itemQueryByManyId = await db
         .collection("products")
         .where(
-          firebaseApp.firestore.FieldPath.documentId(), // does not work
+          firebase.firestore.FieldPath.documentId(),
           "in",
-          productsInCart.map(product => product.id)
+          productsInCart.map(({ item }) => item.id)
         )
         .get();
-      const [item] = itemQueryByManyId.docs;
-      console.log("ITEMS?:", item);
-      item.ref.update({ stock: item.data().stock - 1 });
+      const items = itemQueryByManyId.docs;
+      items.map((item, idx) => {
+        const itemOrderQuantity = productsInCart[idx].count;
+        if (item.data().stock - itemOrderQuantity > 0) {
+          item.ref.update({
+            stock: item.data().stock - productsInCart[idx].count,
+          });
+        }
+        return null;
+      });
     } catch (err) {
       console.log("Error creating order", err);
     }
@@ -50,14 +56,15 @@ const Cart = () => {
 
   return (
     <StyledCart>
-      <StyledList>
-        {productsInCart.length === 0 ? (
-          <>
-            <span>No products in cart</span>
-            <Link to="/">Go back</Link>
-          </>
-        ) : (
-          productsInCart.map(product => {
+      {productsInCart.length === 0 ? (
+        <EmptyCart>
+          <h1>Your cart is empty</h1>
+          <h4>¿Don't know what to buy? ¡Check out our recommendations!</h4>
+          <StyledLink to="/">Go back</StyledLink>
+        </EmptyCart>
+      ) : (
+        <StyledList>
+          {productsInCart.map(product => {
             const { item, count } = product;
             return (
               <StyledRow key={item.id}>
@@ -68,9 +75,9 @@ const Cart = () => {
                 <button onClick={() => removeFromCart(item)}>Remove</button>
               </StyledRow>
             );
-          })
-        )}
-      </StyledList>
+          })}
+        </StyledList>
+      )}
       {productsInCart.length > 0 && <Total>Total: ${totalSum}</Total>}
       {productsInCart.length > 0 && (
         <BuyButton onClick={createOrder}>Finish Order</BuyButton>
