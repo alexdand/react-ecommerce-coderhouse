@@ -5,7 +5,7 @@ import MenuItem from "../MenuItem";
 import { StyledContainer, StyledMenu, StyledWidgets } from "./styles.css";
 
 const NavBar = () => {
-  const menuItems = ["home", "categories"];
+  const menuItems = ["home", "categories", "orders"];
 
   return (
     <StyledContainer>

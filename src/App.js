@@ -7,6 +7,7 @@ import CartProvider from "./context/CartProvider";
 import Cart from "./components/Cart";
 import Categories from "./components/Categories";
 import { StyledApp } from "./styles.css";
+import Orders from "./components/Orders";
 
 const App = () => {
   return (
@@ -29,6 +30,9 @@ const App = () => {
             </Route>
             <Route exact path="/cart">
               <Cart />
+            </Route>
+            <Route exact path="/orders">
+              <Orders />
             </Route>
           </Switch>
         </CartProvider>

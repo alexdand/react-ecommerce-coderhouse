@@ -10,11 +10,13 @@ export const StyledCart = styled.div`
 
 export const StyledList = styled.div`
   display: grid;
+  grid-template-rows: 100px;
 `;
 
 export const StyledRow = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 100px;
 `;
 
 export const StyledImage = styled.img`
@@ -32,6 +34,7 @@ export const BuyButton = styled.button`
   width: 180px;
   height: 40px;
   border: none;
+  cursor: pointer;
 `;
 
 export const Total = styled.div`
