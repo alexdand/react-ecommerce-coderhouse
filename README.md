@@ -4,6 +4,10 @@ Proyecto final del curso de React.js en Coderhouse.<br />
 Un ecommerce con poca data para pedir comida.<br />
 Usa `react-router-dom` y `styled-components`.
 
+Tambien hice un deploy con Netlify, se puede ver el sitio en vivo aca https://coderfoo-ecommerce.netlify.app/.
+
+## Also
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
