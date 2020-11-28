@@ -16,22 +16,22 @@ const App = () => {
         <CartProvider>
           <NavBar />
           <Switch>
-            <Route exact path={["/", "/home"]}>
+            <Route exact path={["/", "/inicio"]}>
               <ItemListContainer />
             </Route>
-            <Route exact path="/categories">
+            <Route exact path="/categorias">
               <Categories />
             </Route>
-            <Route exact path="/categories/:category">
+            <Route exact path="/categorias/:category">
               <ItemListContainer />
             </Route>
-            <Route exact path="/products/:productId">
+            <Route exact path="/productos/:productId">
               <ItemDetailContainer />
             </Route>
-            <Route exact path="/cart">
+            <Route exact path="/carrito">
               <Cart />
             </Route>
-            <Route exact path="/orders">
+            <Route exact path="/ordenes">
               <Orders />
             </Route>
           </Switch>

@@ -13,7 +13,7 @@ const CartWidget = () => {
 
   return (
     <div>
-      <StyledLink to="/cart">
+      <StyledLink to="/carrito">
         <FiShoppingCart />
         <span>{countItems}</span>
       </StyledLink>

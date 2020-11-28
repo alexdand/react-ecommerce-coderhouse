@@ -27,7 +27,7 @@ const Categories = () => {
         <CategoryCard
           key={cat.name}
           name={cat.name}
-          route={`categories/${cat.name.toLowerCase()}`}
+          route={`categorias/${cat.name.toLowerCase()}`}
           img={`/imgs/${cat.img}`}
         />
       ))}

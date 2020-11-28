@@ -5,12 +5,12 @@ import MenuItem from "../MenuItem";
 import { StyledContainer, StyledMenu, StyledWidgets } from "./styles.css";
 
 const NavBar = () => {
-  const menuItems = ["home", "categories", "orders"];
+  const menuItems = ["inicio", "categorias", "ordenes"];
 
   return (
     <StyledContainer>
       <Link to="/">
-        <h1>Jack Food Service</h1>
+        <h1>Almacen de Pepe</h1>
       </Link>
       <StyledMenu>
         {menuItems.map(item => (

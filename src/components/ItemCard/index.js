@@ -21,7 +21,7 @@ const ItemCard = item => {
 
   return (
     <StyledItemCard>
-      <StyledLink to={`/products/${id}`}>
+      <StyledLink to={`/productos/${id}`}>
         <StyledImage src={img} alt={name} />
         <StyledTitle>{name}</StyledTitle>
       </StyledLink>
