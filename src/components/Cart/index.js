@@ -62,7 +62,7 @@ const Cart = () => {
         title="Nueva orden"
         message="Orden creada exitosamente!"
         handleClose={() => setDisplaySuccessModal(false)}
-        button={<Link to="/orders">Ir a tus ordenes</Link>}
+        button={<Link to="/ordenes">Ir a tus ordenes</Link>}
       />
       <Modal
         type="error"
