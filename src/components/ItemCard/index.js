@@ -28,7 +28,7 @@ const ItemCard = item => {
       <StyledPrice>${price}</StyledPrice>
       {stock === 0 ? <p>Out of stock</p> : null}
       <StyledButton onClick={evt => addToCart(evt, item)}>
-        Add To Cart
+        Agregar al carrito
       </StyledButton>
     </StyledItemCard>
   );
