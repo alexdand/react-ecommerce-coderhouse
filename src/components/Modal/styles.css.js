@@ -12,6 +12,7 @@ export const StyledModal = styled.div`
   left: calc(50% - 250px);
   border: 1px solid black;
   padding-bottom: 20px;
+  background-color: ${Colors.White};
   h2 {
     background-color: ${props =>
       props.type === "success"
@@ -26,7 +27,6 @@ export const StyledModal = styled.div`
 `;
 
 export const StyledDescription = styled.p`
-  background-color: ${Colors.White};
   height: 100%;
   display: flex;
   justify-content: center;

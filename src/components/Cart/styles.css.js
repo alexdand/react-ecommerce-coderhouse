@@ -17,6 +17,7 @@ export const StyledRow = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100px;
+  align-items: center;
 `;
 
 export const StyledImage = styled.img`
@@ -25,6 +26,7 @@ export const StyledImage = styled.img`
 `;
 
 export const BuyButton = styled.button`
+  opacity: ${props => (props.isDisabled ? "0.5" : "1")};
   position: absolute;
   right: 10px;
   bottom: -40px;
