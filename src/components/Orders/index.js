@@ -21,12 +21,14 @@ const Orders = () => {
   return (
     <List>
       <Row>
+        <span>ID</span>
         <span>Items</span>
-        <span>Date</span>
+        <span>Fecha</span>
         <span>Total</span>
       </Row>
       {[...orders].sort(byDate).map(order => (
         <Row key={order.id}>
+          <span>{order.id}</span>
           <span>
             {order.items
               .map(({ count, item }) => `${item.name} (${count})`)

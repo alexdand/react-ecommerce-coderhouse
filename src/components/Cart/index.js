@@ -15,17 +15,24 @@ import {
 } from "./styles.css";
 import { calculateTotal, createOrder } from "./utils";
 
+// TODO:
+// - Extraer displaySuccessModal, displayErrorModal, isFormValid y setOrderId
+//   a otro componente ya que no es responsabilidad del Cart
 const Cart = () => {
   const [displaySuccessModal, setDisplaySuccessModal] = React.useState(false);
   const [displayErrorModal, setDisplayErrorModal] = React.useState(false);
   const [isFormValid, setIsFormValid] = React.useState(false);
+  const [orderId, setOrderId] = React.useState(null);
   const { productsInCart, removeProductFromCart } = useCart();
   const totalSum = calculateTotal(productsInCart);
   const removeFromCart = product => removeProductFromCart(product);
 
   const onFinishOrder = () => {
     createOrder(productsInCart)
-      .then(() => setDisplaySuccessModal(true))
+      .then(orderId => {
+        setOrderId(orderId);
+        setDisplaySuccessModal(true);
+      })
       .catch(() =>
         setDisplayErrorModal("There was an error creating the order")
       );
@@ -71,7 +78,7 @@ const Cart = () => {
         type="success"
         display={displaySuccessModal}
         title="Nueva orden"
-        message="Orden creada exitosamente!"
+        message={`Orden creada exitosamente! Id: ${orderId}`}
         handleClose={() => setDisplaySuccessModal(false)}
         button={<Link to="/ordenes">Ir a tus ordenes</Link>}
       />

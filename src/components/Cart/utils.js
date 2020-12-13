@@ -17,7 +17,7 @@ export const createOrder = async productsInCart => {
   };
   const orders = db.collection("orders");
   try {
-    orders.add(newOrder);
+    const createdOrder = await orders.add(newOrder);
     const itemQueryByManyId = await db
       .collection("products")
       .where(
@@ -36,6 +36,7 @@ export const createOrder = async productsInCart => {
       }
       return null;
     });
+    return createdOrder.id;
   } catch (err) {
     console.log("Error creating order", err);
   }
